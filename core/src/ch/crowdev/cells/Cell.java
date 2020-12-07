@@ -12,4 +12,8 @@ public class Cell {
         direction = _dir;
         type = _type;
     }
+
+    public int getType() {
+        return type;
+    }
 }

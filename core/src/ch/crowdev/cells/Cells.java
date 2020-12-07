@@ -36,7 +36,8 @@ public class Cells extends ApplicationAdapter {
 
 		for (int x = 0; x < 1260; x += 60) {
 			for (int y = 0; y < 720; y += 60) {
-				grid[x / 60][y / 60] = new Cell(x / 60, y / 60, 1, randGen.nextInt(4));
+				int type = randGen.nextInt(5);
+				grid[x / 60][y / 60] = new Cell(x / 60, y / 60, 1, type);
 			}
 		}
 	}
@@ -50,7 +51,7 @@ public class Cells extends ApplicationAdapter {
 
 		for (int x = 0; x < 1260; x += 60) {
 			for (int y = 0; y < 720; y += 60) {
-				spriteBatch.draw(sprites.get(cellTypes[grid[x / 60][y / 60].type]), x, y);
+				spriteBatch.draw(sprites.get(cellTypes[grid[0][0].getType()]), x, y);
 			}
 		}
 
