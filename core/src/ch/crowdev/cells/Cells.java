@@ -13,6 +13,7 @@ import java.util.HashMap;
 public class Cells extends ApplicationAdapter {
 	private OrthographicCamera camera;
 	private SpriteBatch spriteBatch;
+	private String[] cellTypes = {"", "empty cell", "dead cell", "living cell", "rotator"};
 	public TextureAtlas cells;
 	public HashMap<String, Sprite> sprites = new HashMap<String, Sprite>();
 	public Cell[][] grid = new Cell[21][12];
@@ -30,6 +31,12 @@ public class Cells extends ApplicationAdapter {
 
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, 1260, 720);
+
+		for (int x = 0; x < 1260; x += 60) {
+			for (int y = 0; y < 720; y += 60) {
+				grid[x / 60][y / 60] = new Cell(x / 60, y / 60, 1, 1);
+			}
+		}
 	}
 
 	@Override
@@ -41,7 +48,7 @@ public class Cells extends ApplicationAdapter {
 
 		for (int x = 0; x < 1260; x += 60) {
 			for (int y = 0; y < 720; y += 60) {
-				spriteBatch.draw(sprites.get("empty cell"), x, y);
+				spriteBatch.draw(sprites.get(cellTypes[grid[x / 60][y / 60].type]), x, y);
 			}
 		}
 
