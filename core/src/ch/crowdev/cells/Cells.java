@@ -34,7 +34,7 @@ public class Cells extends ApplicationAdapter {
 
 		for (int x = 0; x < 1260; x += 60) {
 			for (int y = 0; y < 720; y += 60) {
-				grid[x / 60][y / 60] = new Cell(x / 60, y / 60, 1, 1);
+				grid[x / 60][y / 60] = new Cell(x / 60, y / 60, 1, (int)(Math.random() * 10));
 			}
 		}
 	}
