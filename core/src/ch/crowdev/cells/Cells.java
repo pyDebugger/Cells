@@ -9,25 +9,23 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
 import java.util.HashMap;
-import java.util.Random;
 
 public class Cells extends ApplicationAdapter {
 	private OrthographicCamera camera;
 	private SpriteBatch spriteBatch;
 	private String[] cellTypes = {"", "empty cell", "dead cell", "living cell", "rotator"};
-	private Random randGen = new Random();
-	public TextureAtlas cells;
+	public TextureAtlas spritesheet;
 	public HashMap<String, Sprite> sprites = new HashMap<String, Sprite>();
 	public Cell[][] grid = new Cell[21][12];
 
 	@Override
 	public void create() {
-		cells = new TextureAtlas("cells.atlas");
+		spritesheet = new TextureAtlas("sprites.atlas");
 
-		sprites.put("empty cell", cells.createSprite("empty_cell"));
-		sprites.put("dead cell", cells.createSprite("dead_cell"));
-		sprites.put("living cell", cells.createSprite("living_cell"));
-		sprites.put("rotator", cells.createSprite("rotator_cell"));
+		sprites.put("empty cell", spritesheet.createSprite("empty_cell"));
+		sprites.put("dead cell", spritesheet.createSprite("dead_cell"));
+		sprites.put("living cell", spritesheet.createSprite("living_cell"));
+		sprites.put("rotator", spritesheet.createSprite("rotator_cell"));
 
 		spriteBatch = new SpriteBatch();
 
@@ -36,10 +34,11 @@ public class Cells extends ApplicationAdapter {
 
 		for (int x = 0; x < 1260; x += 60) {
 			for (int y = 0; y < 720; y += 60) {
-				int type = randGen.nextInt(5);
-				grid[x / 60][y / 60] = new Cell(x / 60, y / 60, 1, type);
+				grid[x / 60][y / 60] = new Cell(x / 60, y / 60, 1, 1);
 			}
 		}
+
+		grid[10][6] = new Cell(10, 6, 1, 3);
 	}
 
 	@Override
@@ -51,7 +50,7 @@ public class Cells extends ApplicationAdapter {
 
 		for (int x = 0; x < 1260; x += 60) {
 			for (int y = 0; y < 720; y += 60) {
-				spriteBatch.draw(sprites.get(cellTypes[grid[0][0].getType()]), x, y);
+				spriteBatch.draw(sprites.get(cellTypes[grid[x / 60][y / 60].getType()]), x, y);
 			}
 		}
 
@@ -63,6 +62,6 @@ public class Cells extends ApplicationAdapter {
 	@Override
 	public void dispose () {
 		spriteBatch.dispose();
-		cells.dispose();
+		spritesheet.dispose();
 	}
 }
