@@ -64,8 +64,8 @@ public class Cells extends ApplicationAdapter {
 				for (int y = 0; y < 720; y += 60) {
 					switch (grid[x / 60][y / 60].getType()) {
 						case 3:
-							if (x < 21) {
-								grid[x + 60 / 60][y / 60] = new Cell(x + 60 / 60, y / 60, 1, 3);
+							if (x / 60 < 19) {
+								grid[(x + 60) / 60][y / 60] = new Cell(x + 60 / 60, y / 60, 1, 3);
 							} else {
 								grid[x / 60][y / 60] = new Cell(x / 60, y / 60, 1, 2);
 							}
