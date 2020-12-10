@@ -40,9 +40,8 @@ public class Cells extends ApplicationAdapter {
 			}
 		}
 
+		grid[9][6] = new Cell(9, 6, 1, 4);
 		grid[10][6] = new Cell(10, 6, 1, 3);
-		grid[10][7] = new Cell(10, 7, 3, 3);
-		grid[10][8] = new Cell(10, 6, 4, 3);
 	}
 
 	@Override
@@ -107,6 +106,9 @@ public class Cells extends ApplicationAdapter {
 						grid[x / 60][y / 60] = new Cell(x / 60, y / 60, 1, 1);
 						x += 60;
 						break;
+					case 4:
+						Cell temp = grid[x / 60][y / 60];
+						grid[(x + 60) / 60][y / 60] = new Cell((x + 60) / 60, y / 60, temp.direction + 1, temp.getType());
 				}
 			}
 		}
