@@ -108,7 +108,6 @@ public class Cells extends ApplicationAdapter {
 						break;
 					case 4:
 						Cell temp = grid[x / 60][y / 60];
-						grid[(x + 60) / 60][y / 60] = new Cell((x + 60) / 60, y / 60, temp.direction + 1, temp.getType());
 				}
 			}
 		}
