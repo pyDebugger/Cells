@@ -3,7 +3,7 @@ package ch.crowdev.cells;
 public class Cell {
     public int x;
     public int y;
-    public int direction;
+    public int direction; // 1: left, 2: down, 3: right, 4: up
     public int type;
     public int rotation;
 

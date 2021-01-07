@@ -42,6 +42,7 @@ public class Cells extends ApplicationAdapter {
 
 		grid[9][6] = new Cell(9, 6, 1, 4);
 		grid[10][6] = new Cell(10, 6, 1, 3);
+		grid[8][5] = new Cell(8, 5, 1, 2);
 	}
 
 	@Override
