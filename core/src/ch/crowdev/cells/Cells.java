@@ -15,7 +15,6 @@ public class Cells extends ApplicationAdapter {
 	private OrthographicCamera camera;
 	private SpriteBatch spriteBatch;
 	private String[] cellTypes = {"", "empty cell", "dead cell", "living cell", "rotator"};
-	private int behaviorTimeout = 120;
 	public TextureAtlas spritesheet;
 	public HashMap<String, Sprite> sprites = new HashMap<String, Sprite>();
 	public Cell[][] grid = new Cell[21][12];
@@ -62,12 +61,6 @@ public class Cells extends ApplicationAdapter {
 
 		spriteBatch.end();
 
-		if (behaviorTimeout == 0) {
-			behavior();
-		}
-
-		behaviorTimeout -= 1;
-
 		if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
 			behavior();
 		}
@@ -112,7 +105,5 @@ public class Cells extends ApplicationAdapter {
 				}
 			}
 		}
-
-		behaviorTimeout = 60;
 	}
 }
